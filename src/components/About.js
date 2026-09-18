@@ -1,48 +1,53 @@
-import React from 'react'
+import React from "react";
 
+const FAQS = [
+  {
+    q: "What does TextUtils do?",
+    a: "It converts pasted text to uppercase or lowercase, strips extra spaces, copies text to your clipboard, and gives you a live word count, character count and estimated reading time — all in the browser, nothing is sent anywhere.",
+  },
+  {
+    q: "How is reading time calculated?",
+    a: "Reading time is estimated at roughly 125 words per minute (0.008 minutes per word), rounded to two decimal places.",
+  },
+  {
+    q: "Does my text get stored or uploaded?",
+    a: "No. Everything runs client-side in React state — closing or refreshing the tab clears it, and nothing is sent to a server.",
+  },
+  {
+    q: "Is there a dark mode?",
+    a: "Yes — use the toggle in the top-right of the navbar. Your preference is applied instantly across the whole page.",
+  },
+];
 
 export default function About(props) {
-
   return (
-    <>
-    <div className='container-fluid mb-5' style={{color: props.mode ==='dark'? 'white':'#243743'}}>
-    <h1 className='text-center m-4' style={{color: props.mode ==='dark'? 'white':'#243743'}}>About Us</h1>
-    <div className="accordion accordion-flush" id="accordionFlushExample" style={{backgroundColor: props.mode ==='dark'? '#243743':'white' ,color: props.mode ==='dark'? 'white':'#243743', borderColor:props.mode ==='dark' ? 'white':'#243743'}}>
-        <div className="accordion-item" style={{backgroundColor: props.mode ==='dark'? '#243743':'white' ,color: props.mode ==='dark'? 'white':'#243743', borderColor:props.mode ==='dark' ? 'white':'#243743'}}>
-            <h2 className="accordion-header" >
-            <button className="accordion-button collapsed"  type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" style={{backgroundColor: props.mode ==='dark'? '#243743':'white' ,color: props.mode ==='dark'? 'white':'#243743', borderColor:props.mode ==='dark' ? 'white':'#243743'}}>
-                Accordion Item #1
-            </button>
-            </h2>
-            <div id="flush-collapseOne" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-            <div className="accordion-body" >Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-            </div>
-        </div>
-        <div className="accordion-item"style={{backgroundColor: props.mode ==='dark'? '#243743':'white' ,color: props.mode ==='dark'? 'white':'#243743', borderColor:props.mode ==='dark' ? 'white':'#243743'}}>
-            <h2 className="accordion-header">
-            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" style={{backgroundColor: props.mode ==='dark'? '#243743':'white' ,color: props.mode ==='dark'? 'white':'#243743', borderColor:props.mode ==='dark' ? 'white':'#243743'}}>
-                Accordion Item #2
-            </button>
-            </h2>
-            <div id="flush-collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-            <div className="accordion-body" >Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-            </div>
-        </div>
-        <div className="accordion-item" style={{backgroundColor: props.mode ==='dark'? '#243743':'white' ,color: props.mode ==='dark'? 'white':'#243743', borderColor:props.mode ==='dark' ? 'white':'#243743'}}>
-            <h2 className="accordion-header">
-            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree" style={{backgroundColor: props.mode ==='dark'? '#243743':'white' ,color: props.mode ==='dark'? 'white':'#243743', borderColor:props.mode ==='dark' ? 'white':'#243743'}}>
-                Accordion Item #3
-            </button>
-            </h2>
-            <div id="flush-collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-            <div className="accordion-body" >Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-            </div>
-        </div>
+    <div className="container my-5">
+      <div className="ta-hero">
+        <span className="ta-eyebrow">Good to know</span>
+        <h1 className="ta-heading">About TextUtils</h1>
+      </div>
+
+      <p className="ta-about-lead">
+        TextUtils is a small, focused utility for cleaning up and inspecting
+        plain text — case conversion, whitespace cleanup, clipboard copy, and
+        live word / character / reading-time stats.
+      </p>
+
+      <div className="ta-faq">
+        {FAQS.map((item, i) => (
+          <details className="ta-faq-item" key={i}>
+            <summary className="ta-faq-q">
+              <span className="ta-faq-index mono">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              {item.q}
+            </summary>
+            <p className="ta-faq-a">{item.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <hr className="ta-divider" />
     </div>
-    {/* <div className="container">
-        <button onClick={toggleChange} className='btn btn-primary my-4'>{btnText}</button>
-    </div> */}
-    </div>
-    </>
-  )
+  );
 }
