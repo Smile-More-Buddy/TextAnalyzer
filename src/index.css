@@ -1,13 +1,127 @@
+
+:root {
+  --font-display:
+    "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  --accent: #ff4d1c;
+  --accent-ink: #1a1100;
+
+  --bg: #faf9f6;
+  --bg-elevated: #ffffff;
+  --bg-inset: #f1efe9;
+  --ink: #14171a;
+  --ink-soft: #5b6169;
+  --border: #14171a;
+  --border-soft: rgba(20, 23, 26, 0.14);
+
+  --shadow-hard: 4px 4px 0 0 var(--ink);
+  --shadow-hard-sm: 2px 2px 0 0 var(--ink);
+
+  --ease: cubic-bezier(0.22, 0.9, 0.32, 1);
+}
+
+body[data-theme="dark"] {
+  --bg: #101214;
+  --bg-elevated: #181b1e;
+  --bg-inset: #1e2225;
+  --ink: #f3f2ee;
+  --ink-soft: #9aa0a6;
+  --border: #f3f2ee;
+  --border-soft: rgba(243, 242, 238, 0.16);
+  --shadow-hard: 4px 4px 0 0 var(--accent);
+  --shadow-hard-sm: 2px 2px 0 0 var(--accent);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  background: var(--bg);
+  color: var(--ink);
+  font-family:
+    var(--font-display),
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition:
+    background-color 0.35s var(--ease),
+    color 0.35s var(--ease);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+code,
+.mono {
+  font-family:
+    var(--font-mono), source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* thin, unfussy scrollbar instead of the default bulky/rounded one */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-inset);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-soft);
+  border: 2px solid var(--bg-inset);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Kill the "every AI-generated site" rounded-corner look everywhere,
+   including inside Bootstrap components, without dropping Bootstrap. */
+*,
+*::before,
+*::after,
+.btn,
+.form-control,
+.form-select,
+.alert,
+.card,
+.navbar,
+.modal-content,
+.dropdown-menu,
+.badge,
+.toast,
+.nav-pills .nav-link,
+.form-switch .form-check-input,
+input,
+textarea,
+select,
+button {
+  border-radius: 0 !important;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }

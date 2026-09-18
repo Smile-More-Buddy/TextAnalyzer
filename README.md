@@ -36,7 +36,7 @@ To get a local copy up and running, follow these simple steps.
 4. **Start the application:**
    ```bash
    npm start
-## The application will launch in your browser at http://localhost:3000.
+### The application will launch in your browser at http://localhost:3000.
 
 ## Usage
 - **Enter Text**: Start by typing or pasting text into the input area.
